@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from '../api';
 
 function Login() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await fetch("https://auth-backend-yl53.onrender.com/api/auth/login", {
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,9 +32,7 @@ function Login() {
       const data = await res.json();
       alert(data.message || "Login success");
 
-
-      navigate('/')
-
+      navigate('/');
     } catch (err) {
       console.log(err);
       alert("Login failed");
@@ -41,40 +40,44 @@ function Login() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h2>Login</h2>
+    <div className="auth-page login-page">
+      <div className="auth-container">
+        <h2 className="auth-title">Login</h2>
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-        />
-        <br /><br />
+        <form className="auth-form" onSubmit={handleLogin}>
+          <input
+            className="auth-input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+          />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-        />
-        <br /><br />
+          <input
+            className="auth-input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+          />
 
-        <button type="submit">Login</button>
-      </form>
+          <button className="auth-button" type="submit">
+            Login
+          </button>
+        </form>
 
-      <p>
-        New user? 
-        <span
-          style={{ color: "blue", cursor: "pointer" }}
-          onClick={() => navigate("/api/auth/register")}
-        >
-          Signup
-        </span>
-      </p>
+        <p className="auth-switch-text">
+          New user?
+          <span
+            className="auth-switch-link"
+            onClick={() => navigate("/api/auth/register")}
+          >
+            Signup
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
