@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../api";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const res = await fetch("https://auth-backend-yl53.onrender.com/api/auth/register", {
+      const res = await fetch(`${API_BASE}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
