@@ -20,7 +20,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
+      const res = await fetch("https://auth-backend-yl53.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,8 +32,6 @@ function Login() {
       alert(data.message || "Login success");
 
 
-      // here you can store token later
-      // localStorage.setItem("token", data.token)
       navigate('/')
 
     } catch (err) {

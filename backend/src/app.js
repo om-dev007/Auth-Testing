@@ -7,7 +7,7 @@ const app = e();
 
 app.use(e.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({origin: "*"}));
 app.use("/api/auth", router)
 
 export default app;

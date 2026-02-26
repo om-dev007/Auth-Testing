@@ -21,7 +21,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/register", {
+      const res = await fetch("https://auth-backend-yl53.onrender.com/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,6 @@ function SignUp() {
       
       alert(data.message || "Registered!");
 
-      // after signup → go to login
       navigate('/api/auth/login');
     } catch (err) {
       console.log(err);
