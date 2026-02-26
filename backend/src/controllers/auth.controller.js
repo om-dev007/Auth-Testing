@@ -51,7 +51,6 @@ export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // input feild is empty ?
     if (!email || !password) {
       return res.status(400).json({
         message: "Email and password required",
@@ -60,14 +59,12 @@ export const loginUser = async (req, res) => {
 
     const user = await dbModel.findOne({ email });
 
-    // user exist ?
     if (!user) {
       return res.status(400).json({
         messagee: "User not found",
       });
     }
 
-    // password is correct or not?
     if (user.password !== password) {
       return res.status(400).json({
         message: "Invalid password",
