@@ -1,17 +1,23 @@
-import e from "express";
+import express from "express";
 import cookieParser from "cookie-parser";
-import router from "./routes/user.routes.js";
 import cors from "cors";
+import router from "./routes/user.routes.js";
 
+const app = express();
 
-const app = e();
+// ✅ production frontend domain (NO slash)
+const FRONTEND_URL = "https://backend-auth-testing.vercel.app";
 
+// ✅ CORS (stable config)
 app.use(cors({
-    origin: "https://backend-auth-testing.vercel.app/",
-    credentials: true
+  origin: FRONTEND_URL,
+  credentials: true
 }));
-app.use(e.json());
+
+app.use(express.json());
 app.use(cookieParser());
-app.use("/api/auth", router)
+
+// routes
+app.use("/api/auth", router);
 
 export default app;
