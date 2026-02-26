@@ -1,3 +1,0 @@
-gDgO8lTH3NjbFdDq
-
-mongodb+srv://authentication_learning:gDgO8lTH3NjbFdDq@authcluster.gv74dmt.mongodb.net/
