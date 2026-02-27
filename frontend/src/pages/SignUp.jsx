@@ -31,6 +31,8 @@ function SignUp() {
 
       const data = await res.json();
 
+      if (!res.ok) alert(data.message)
+
       alert(data.message || "Registered!");
       navigate('/api/auth/login');
     } catch (err) {
