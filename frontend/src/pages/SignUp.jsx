@@ -21,20 +21,25 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`https://auth-backend-yl53.onrender.com/api/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `https://auth-backend-yl53.onrender.com/api/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
         },
-        body: JSON.stringify(form),
-      });
+      );
 
       const data = await res.json();
 
-      if (!res.ok) alert(data.message)
-
-      alert(data.message || "Registered!");
-      navigate('/api/auth/login');
+      if (!res.ok) {
+        alert(data.message);
+      } else {
+        alert(data.message || "Registered!");
+        navigate("/api/auth/login");
+      }
     } catch (err) {
       console.log(err);
       alert("Signup failed");
