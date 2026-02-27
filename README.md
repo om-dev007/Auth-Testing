@@ -7,7 +7,7 @@ It demonstrates user signup and login using a React frontend and Express backend
 
 ## 🌐 Live
 
-Frontend: https://backend-auth-testing.vercel.app
+Frontend: https://backend-auth-testing.vercel.app                                                                                                                                        
 Backend: https://auth-backend-yl53.onrender.com
 
 ---
