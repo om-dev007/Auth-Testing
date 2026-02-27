@@ -33,7 +33,7 @@ function Login() {
 
       const data = await res.json();
       if (!res.ok) {
-        alert(data.message || "Login failed");
+        alert(data.message || "Login failed or user not found");
         return;
       }
 
