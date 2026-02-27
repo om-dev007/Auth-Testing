@@ -20,18 +20,25 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`https://auth-backend-yl53.onrender.com/api/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `https://auth-backend-yl53.onrender.com/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
         },
-        body: JSON.stringify(form),
-      });
+      );
 
       const data = await res.json();
-      alert(data.message || "Login success");
+      if (!res.ok) {
+        alert(data.message || "Login failed");
+        return;
+      }
 
-      navigate('/');
+      alert("Login successful");
+
     } catch (err) {
       console.log(err);
       alert("Login failed");
